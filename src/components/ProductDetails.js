@@ -10,7 +10,7 @@ const ProductDetails = (props) => {
     const product = data[id-1];
     const {image,title,description,price,category} = product
     return ( <div>
-        <img src='image'/>
+        <img src={image}/>
 <div>
 <h3>{title}</h3>
 <p>{description}</p>
