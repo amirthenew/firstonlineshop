@@ -1,4 +1,4 @@
-import React,{useReducer} from 'react';
+import React,{useReducer,createContext} from 'react';
 
 const initialState = {
     selectedItems : [],
@@ -7,6 +7,14 @@ const initialState = {
     checkout : false
 
 }
+
+const sumItems = items=>{
+    const itemsCounter = items.reduce((total,product)=>
+        total +  total+product.quantity,0);
+        const total = items.reduce((total,product)=> total + product.price * product.quantity,0).toFixed(2)
+return {itemsCounter,total}
+}
+
 const cartReducer = (state,action)=>{
     switch(action.type) {
         case 'ADD_ITEM':
@@ -20,13 +28,15 @@ const cartReducer = (state,action)=>{
 
             return {
                 ...state,
-                selectedItems : [...state.selectedItems]
+                selectedItems : [...state.selectedItems],
+                ...sumItems(state.selectedItems)
             }
 
             case 'REMOVE_ITEM' :
                 const newSelectedItems = state.selectedItems.filter(item=>item.id !== action.payload);
                 return {
-                    ...state,selectedItems:[...newSelectedItems]
+                    ...state,selectedItems:[...newSelectedItems],
+                    ...sumItems(state.selectedItems)
                 }
 
             case 'INCREASE' :
@@ -34,6 +44,7 @@ const cartReducer = (state,action)=>{
                 state.selectedItems(indexI).quantity++
                 return {
                     ...state,
+                    ...sumItems(state.selectedItems)
                 }    
 
                 case 'DECREASE' :
@@ -41,6 +52,7 @@ const cartReducer = (state,action)=>{
                     state.selectedItems(indexD).quantity--
                     return {
                         ...state,
+                        ...sumItems(state.selectedItems)
                     }  
                     
                     case 'CHECKOUT' :
@@ -67,14 +79,16 @@ const cartReducer = (state,action)=>{
 
 }
 
+export const CartContext = createContext()
 
-const CartContextProvider = () => {
+const CartContextProvider = ({children}) => {
 
     const [state,dispatch]=useReducer(cartReducer,initialState)
 
     return (
-        <div>
-        </div>
+<CartContext.Provider value={{state,dispatch}}>
+{children}
+</CartContext.Provider>
       );
 }
  
