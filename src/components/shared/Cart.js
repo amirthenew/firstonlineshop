@@ -1,5 +1,6 @@
 import React ,{useContext}from 'react';
 
+import trashIcon from '../../img/delete.png'
 
 //context
 import { CartContext } from '../../context/CartContextProvider';
@@ -19,7 +20,10 @@ const Cart = (props) => {
         </div>
 
         <div>
-        
+        {
+            quantity>1 ? <button onClick={()=>dispatch({type:'DECREASE',payload : props.data})}> - </button> :
+            <button onClick={()=>dispatch({type:'REMOVE_ITEM',payload : props.data})}><img style={{width:'20px'}} src={trashIcon}/></button>
+        }
         </div>
         </div> );
 }

@@ -1,8 +1,23 @@
+import React,{useContext} from 'react';
+
+//components
+import Cart from './shared/Cart';
+
+// contexts
+import { CartContext } from '../context/CartContextProvider';
+
+
 const ShopCart = () => {
+
+    const {state,dispatch} = useContext(CartContext)
+
+
     return (  
 
         <div>
-        shop cart
+        <div>
+        {state.selectedItems.map(item => <Cart key={item.id} data={item}/>)}
+        </div>
         </div>
     );
 }
