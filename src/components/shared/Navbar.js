@@ -1,27 +1,27 @@
-import React,{useContext} from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-//context
-import { CartContext } from './../../context/CartContextProvider';
+// Context
+import { CartContext } from '../../context/CartContextProvider';
 
-import shopIcon from '../../img/shop.png'
+// Icons
+import shopIcon from "../../img/shop.png"
 
 const Navbar = () => {
-    
-const{state}=useContext(CartContext)
 
-    return ( <div>
+    const {state} = useContext(CartContext);
+
+    return (
         <div>
-        
-        <Link to='/product'>product</Link>
-        <div>
-        <Link><img style={{width:'20px'}} src={shopIcon} alt='shop'/></Link>
-         <span>{state.itemsCounter}</span>
+            <div>
+                <Link to="/products">Products</Link>
+                <div>
+                    <Link to="/Cart"><img style={{width:'20px'}} src={shopIcon} alt="shop" /></Link>
+                    <span>{state.itemsCounter}</span>
+                </div>
+            </div>
         </div>
-       
-        </div>
-        </div> );
-}
- 
+    );
+};
+
 export default Navbar;
-

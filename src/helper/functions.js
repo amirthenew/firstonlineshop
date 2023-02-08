@@ -7,6 +7,7 @@ const shorten = (title) => {
 
 const isInCart = (state,id)=>{
     const result = !!state.selectedItems.find(item=>item.id===id)
+    return result
 }
 
 const quantityCount = (state,id)=>{
