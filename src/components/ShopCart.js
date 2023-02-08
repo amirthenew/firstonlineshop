@@ -1,5 +1,5 @@
 import React,{useContext} from 'react';
-
+import { Link } from 'react-router-dom';
 //components
 import Cart from './shared/Cart';
 
@@ -30,6 +30,20 @@ const ShopCart = () => {
 
             </div>
         }
+        {
+         state.checkout && <div>
+         <h3>checked out successfully</h3>
+         <Link to='./products'>buy more</Link>
+         </div>   
+        }
+
+
+        {
+            !state.checkout && state.itemsCounter===0 && <div>
+            <h3>want to buy ?</h3>
+            <Link to='./products'>go back to shop</Link>
+            </div>   
+           }
         </div>
     );
 }
