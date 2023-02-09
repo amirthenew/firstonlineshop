@@ -15,12 +15,12 @@ const  Product = ({productData}) => {
     return (
         <div className={styles.container}>
 
-            <img className={styles.cardImage} src={productData.image} alt="product" style={{width: "200px"}} />
+            <img className={styles.cardImage} src={productData.image} alt="product"  />
             <h3>{shorten(productData.title)}</h3>
             <p>{productData.price}</p>
             <div className={styles.linkContainer}>
                 <Link to={`/products/${productData.id}`}>Details</Link>
-                <div>
+                <div className={styles.buttonContainer}>
                    
                     {
                         isInCart(state, productData.id) ?

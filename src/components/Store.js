@@ -6,7 +6,7 @@ import { ProductsContext } from '../context/ProductContextProvider';
 const Store = () => {
 const products = useContext(ProductsContext)
 
-    return (<div className={styles.container} style={{display:'flex',flexWrap:'wrap',justifyContent:'space-between'}}>
+    return (<div className={styles.container}>
 
         {products.map( product=><Product 
             key={product.id} 
