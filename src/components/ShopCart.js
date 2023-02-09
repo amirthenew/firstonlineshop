@@ -6,6 +6,7 @@ import Cart from './shared/Cart';
 // contexts
 import { CartContext } from '../context/CartContextProvider';
 
+import styles from './ShopCart.module.css'
 
 const ShopCart = () => {
 
@@ -14,24 +15,25 @@ const ShopCart = () => {
 
     return (  
 
-        <div>
-        <div>
+        <div className={styles.container}>
+        <div className={styles.cartContainer}>
         {state.selectedItems.map(item => <Cart key={item.id} data={item}/>)}
         </div>
         {
-            state.itemsCounter>0 && <div> 
+            state.itemsCounter>0 && 
+            <div className={styles.payment}> 
             <p><span> total items : </span> {state.itemsCounter}</p>
             <p><span> total payment : </span> {state.total}</p>
             
-<div>
-<button onClick={()=> dispatch({type:'CHECKOUT'})}>checkout</button>
-<button onClick={()=> dispatch({type:'CLEAR'})}>Clear</button>
+<div className={styles.buttonContainer}>
+<button className={styles.checkout} onClick={()=> dispatch({type:'CHECKOUT'})}>checkout</button>
+<button className={styles.clear} onClick={()=> dispatch({type:'CLEAR'})}>Clear</button>
 </div>
 
             </div>
         }
         {
-         state.checkout && <div>
+         state.checkout && <div className={styles.complete}>
          <h3>checked out successfully</h3>
          <Link to='./products'>buy more</Link>
          </div>   
