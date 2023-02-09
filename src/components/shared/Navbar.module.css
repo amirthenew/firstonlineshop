@@ -22,5 +22,46 @@
 }
 
 .productLink:hover{
-    
+    color: #0b499b;
+    border-bottom-color: #0b499b;
 }
+
+.iconsConatainer img {
+    width: 40px;
+    color: #1a73e8;
+
+}
+
+.iconContainer span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #0b499b;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 0.75rem;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  @media (max-width: 1200px) {
+    .container {
+      padding: 15px 80px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px 40px;
+    }
+  }
+  
+  @media (max-width: 555px) {
+    .container {
+      padding: 15px 20px;
+    }
+  }
+  

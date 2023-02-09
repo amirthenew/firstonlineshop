@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../shared/Navbar.module.css'
+import styles from './Navbar.module.css'
 
 // Context
 import { CartContext } from '../../context/CartContextProvider';
@@ -15,7 +15,7 @@ const Navbar = () => {
     return (
         <div className={styles.mainContainer}>
             <div className={styles.container}>
-                <Link className={styles.container} to="/products">Products</Link>
+                <Link className={styles.productLink} to="/products">Products</Link>
                 <div className={styles.iconCounter}>
                     <Link to="/Cart"><img style={{width:'20px'}} src={shopIcon} alt="shop" /></Link>
                     <span>{state.itemsCounter}</span>
